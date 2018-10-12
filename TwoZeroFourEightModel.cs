@@ -37,11 +37,32 @@ namespace twozerofoureight
             return board;
         }
 
+        private bool IsBoardFull()
+        {
+            //check if board array has 0
 
+            bool flag = true;
+
+            for(int i = 0; i < boardSize; i++)
+            {
+                for(int j = 0; j<boardSize; j++)
+                {
+                    if (board[i,j] == 0)
+                    {
+                        flag = false;
+                        break;
+                    } 
+                }
+                if (!flag) { break; }
+            }
+
+            return flag;
+        }
 
         private int[,] Random(int[,] input)
         {
-            while (true)
+            //if board not full generate random tile
+            while (!IsBoardFull())
             {
                 int x = rand.Next(boardSize);
                 int y = rand.Next(boardSize);
