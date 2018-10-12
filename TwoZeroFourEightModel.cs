@@ -37,6 +37,8 @@ namespace twozerofoureight
             return board;
         }
 
+
+
         private int[,] Random(int[,] input)
         {
             while (true)
