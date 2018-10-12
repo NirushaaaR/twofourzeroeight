@@ -37,26 +37,64 @@ namespace twozerofoureight
             return board;
         }
 
+        public bool IsGameOver()
+        {
+            return IsBoardFull() && !CanMove();
+        }
+
+        private bool CanMove()
+        {
+            for (int i = 0; i < boardSize-1; i++)
+            {
+                for (int j = 0; j < boardSize-1; j++)
+                {
+                    //check column
+                    if (board[i, j] == board[i+1,j])
+                    {
+                        return true;
+                    }
+                    //check row
+                    if(board[i,j] == board[i, j + 1])
+                    {
+                        return true;
+                    }
+                }
+
+            }
+            return false; 
+        }
+
+        public int GetScore()
+        {
+            int score = 0;
+            for (int i = 0; i < boardSize; i++)
+            {
+                for (int j = 0; j < boardSize; j++)
+                {
+                    score += board[i, j];
+                }
+
+            }
+            return score;
+        }
+        
+
         private bool IsBoardFull()
         {
-            //check if board array has 0
-
-            bool flag = true;
-
-            for(int i = 0; i < boardSize; i++)
+            
+            for (int i = 0; i < boardSize; i++)
             {
-                for(int j = 0; j<boardSize; j++)
+                for (int j = 0; j < boardSize; j++)
                 {
-                    if (board[i,j] == 0)
+                    //check if board array has 0
+                    if (board[i, j] == 0)
                     {
-                        flag = false;
-                        break;
-                    } 
+                        return false;
+                    }
                 }
-                if (!flag) { break; }
-            }
 
-            return flag;
+            }
+            return true;
         }
 
         private int[,] Random(int[,] input)

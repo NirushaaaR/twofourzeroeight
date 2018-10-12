@@ -75,31 +75,40 @@ namespace twozerofoureight
             UpdateTile(lbl31,board[3, 1]);
             UpdateTile(lbl32,board[3, 2]);
             UpdateTile(lbl33,board[3, 3]);
+            //update score to screen
+            UpdateScore(((TwoZeroFourEightModel)model).GetScore());
+            //show game over if game end
+            if (((TwoZeroFourEightModel)model).IsGameOver()) { lblGameOver.Visible = true; }
         }
 
         private void btnLeft_Click(object sender, EventArgs e)
         {
             controller.ActionPerformed(TwoZeroFourEightController.LEFT);
+
         }
 
         private void btnRight_Click(object sender, EventArgs e)
         {
             controller.ActionPerformed(TwoZeroFourEightController.RIGHT);
+      
         }
 
         private void btnUp_Click(object sender, EventArgs e)
         {
             controller.ActionPerformed(TwoZeroFourEightController.UP);
+   
         }
 
         private void btnDown_Click(object sender, EventArgs e)
         {
             controller.ActionPerformed(TwoZeroFourEightController.DOWN);
+    
         }
 
 
         private void getKeyBoard_Input(object sender, KeyEventArgs e)
         {
+
             switch (e.KeyCode)
             {
                 case Keys.Left:
@@ -119,11 +128,13 @@ namespace twozerofoureight
                     controller.ActionPerformed(TwoZeroFourEightController.DOWN);
                     break;
             }
+
         }
 
-        private void TwoZeroFourEightView_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        private void UpdateScore(int scorePoint)
         {
-            Console.WriteLine(e.KeyCode);
+            lblScore.Text = "Score " + scorePoint;
         }
+
     }
 }
