@@ -108,6 +108,7 @@ namespace twozerofoureight
 
         private void getKeyBoard_Input(object sender, KeyEventArgs e)
         {
+            e.Handled = false;
 
             switch (e.KeyCode)
             {
@@ -134,6 +135,23 @@ namespace twozerofoureight
         private void UpdateScore(int scorePoint)
         {
             lblScore.Text = "Score " + scorePoint;
+        }
+
+        //change focus of keys
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            foreach (Control control in this.Controls)
+            {
+                control.PreviewKeyDown += new PreviewKeyDownEventHandler(control_PreviewKeyDown);
+            }
+        }
+        //make arrow key avialable
+        void control_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down || e.KeyCode == Keys.Left || e.KeyCode == Keys.Right)
+            {
+                e.IsInputKey = true;
+            }
         }
 
     }

@@ -325,10 +325,10 @@
             this.lblGameOver.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblGameOver.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.lblGameOver.ForeColor = System.Drawing.Color.Maroon;
-            this.lblGameOver.Location = new System.Drawing.Point(45, 103);
+            this.lblGameOver.Location = new System.Drawing.Point(152, 378);
             this.lblGameOver.Margin = new System.Windows.Forms.Padding(0);
             this.lblGameOver.Name = "lblGameOver";
-            this.lblGameOver.Size = new System.Drawing.Size(325, 136);
+            this.lblGameOver.Size = new System.Drawing.Size(298, 136);
             this.lblGameOver.TabIndex = 21;
             this.lblGameOver.Text = "Game Over!";
             this.lblGameOver.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -365,7 +365,9 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "TwoZeroFourEightView";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.getKeyBoard_Input);
+            this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.control_PreviewKeyDown);
             this.ResumeLayout(false);
 
         }
